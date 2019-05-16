@@ -381,3 +381,8 @@ table a, #comments a{background-color:inherit;}
 	.hoc.split{max-width:none; width:100%;}
 	.split .box{float:none; width:100%; padding:10% 5%;}
 }
+
+.PFC_btn{
+
+width: 200px
+}
