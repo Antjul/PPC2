@@ -88,98 +88,109 @@ Licence URI: http://www.os-templates.com/template-terms
 <!-- ################################################################################################ -->
 <!-- ################################################################################################ -->
 <!-- ################################################################################################ -->
-<div class="wrapper row3">
-  <main class="hoc container clear"> 
-    <!-- main body -->
-    <!-- ################################################################################################ -->
-    <div class="content"> 
-      <!-- ################################################################################################ -->
-      <h1>&lt;h1&gt; to &lt;h6&gt; - Headline Colour and Size Are All The Same</h1>
-      <img class="imgr borderedbox inspace-5" src="../images/demo/imgr.gif" alt="">
-      <p>Aliquatjusto quisque nam consequat doloreet vest orna partur scetur portortis nam. Metadipiscing eget facilis elit sagittis felisi eger id justo maurisus convallicitur.</p>
-      <p>Dapiensociis <a href="#">temper donec auctortortis cumsan</a> et curabitur condis lorem loborttis leo. Ipsumcommodo libero nunc at in velis tincidunt pellentum tincidunt vel lorem.</p>
-      <img class="imgl borderedbox inspace-5" src="../images/demo/imgl.gif" alt="">
-      <p>This is a W3C compliant free website template from <a href="http://www.os-templates.com/" title="Free Website Templates">OS Templates</a>. For full terms of use of this template please read our <a href="http://www.os-templates.com/template-terms">website template licence</a>.</p>
-      <p>You can use and modify the template for both personal and commercial use. You must keep all copyright information and credit links in the template and associated files. For more website templates visit our <a href="http://www.os-templates.com/">free website templates</a> section.</p>
-      <p>Portortornec condimenterdum eget consectetuer condis consequam pretium pellus sed mauris enim. Puruselit mauris nulla hendimentesque elit semper nam a sapien urna sempus.</p>
-      <div id="comments">
-        <h2>Comments</h2>
-        <ul>
-          <li>
-            <article>
-              <header>
-                <figure class="avatar"><img src="../images/demo/avatar.png" alt=""></figure>
-                <address>
-                By <a href="#">A Name</a>
-                </address>
-                <time datetime="2045-04-06T08:15+00:00">Friday, 6<sup>th</sup> April 2045 @08:15:00</time>
-              </header>
-              <div class="comcont">
-                <p>This is an example of a comment made on a post. You can either edit the comment, delete the comment or reply to the comment. Use this as a place to respond to the post or to share what you are thinking.</p>
-              </div>
-            </article>
-          </li>
-          <li>
-            <article>
-              <header>
-                <figure class="avatar"><img src="../images/demo/avatar.png" alt=""></figure>
-                <address>
-                By <a href="#">A Name</a>
-                </address>
-                <time datetime="2045-04-06T08:15+00:00">Friday, 6<sup>th</sup> April 2045 @08:15:00</time>
-              </header>
-              <div class="comcont">
-                <p>This is an example of a comment made on a post. You can either edit the comment, delete the comment or reply to the comment. Use this as a place to respond to the post or to share what you are thinking.</p>
-              </div>
-            </article>
-          </li>
-          <li>
-            <article>
-              <header>
-                <figure class="avatar"><img src="../images/demo/avatar.png" alt=""></figure>
-                <address>
-                By <a href="#">A Name</a>
-                </address>
-                <time datetime="2045-04-06T08:15+00:00">Friday, 6<sup>th</sup> April 2045 @08:15:00</time>
-              </header>
-              <div class="comcont">
-                <p>This is an example of a comment made on a post. You can either edit the comment, delete the comment or reply to the comment. Use this as a place to respond to the post or to share what you are thinking.</p>
-              </div>
-            </article>
-          </li>
-        </ul>
-        <h2>Write A Comment</h2>
-        <form action="#" method="post">
-          <div class="one_third first">
-            <label for="name">Name <span>*</span></label>
-            <input type="text" name="name" id="name" value="" size="22" required>
-          </div>
-          <div class="one_third">
-            <label for="email">Mail <span>*</span></label>
-            <input type="email" name="email" id="email" value="" size="22" required>
-          </div>
-          <div class="one_third">
-            <label for="url">Website</label>
-            <input type="url" name="url" id="url" value="" size="22">
-          </div>
-          <div class="block clear">
-            <label for="comment">Your Comment</label>
-            <textarea name="comment" id="comment" cols="25" rows="10"></textarea>
-          </div>
-          <div>
-            <input type="submit" name="submit" value="Submit Form">
-            &nbsp;
-            <input type="reset" name="reset" value="Reset Form">
-          </div>
-        </form>
-      </div>
-      <!-- ################################################################################################ -->
-    </div>
-    <!-- ################################################################################################ -->
-    <!-- / main body -->
-    <div class="clear"></div>
-  </main>
-</div>
+<h4>pierre - feuille - ciseaux</h4>
+  <button type="button" class="PFC_btn" value="0" />
+    <img src="images/demo/pierre.jpg" alt="pierre" width="200" height="200" /></button>
+  <button type="button" class="PFC_btn" value="1" />
+    <img src="images/demo/papier.jpg" alt="feuille" width="200" height="200" /></button>
+  </button>
+  <button type="button" class="PFC_btn" value="2" />
+    <img src="images/demo/ciseaux.jpg" alt="ciseaux" width="200" height="200" /></button>
+  </button>
+<p>Jouez :</p>
+<div id="PFC_show_result"></div>
+
+<script type='text/Javascript'>
+
+var PFC = {
+	init:function(){
+		this.equal = "égalité";
+		this.win = "gagné";
+		this.lose = "perdu";
+		this.txt_equal = "égalité";
+		this.txt_win = "Vous gagnez !";
+		this.txt_lose = "Vous avez perdu.";
+ 
+		this.my_point = 0;
+		this.ia_point = 0;
+		this.count = 0;
+		this.bet = ['pierre', 'feuille', 'ciseaux'];
+ 
+		this.show_result = document.getElementById('PFC_show_result');
+		this.show_result.innerHTML = '';
+		this.txt_result = '';
+	},
+	play:function( player_bet ){
+		var i = Number(player_bet);
+		var j = Math.floor(Math.random() * 3); // 0, 1 or 2
+ 
+		if (this.my_point < 3 && this.ia_point < 3)  // il faut 3 victoires
+		{
+			this.show_result.innerHTML += this.score(i,j);
+      this.count++;
+		}
+ 
+		if ( (this.my_point >= 3 || this.ia_point >= 3) && this.txt_result == '' )  // on a 3 victoires
+		{
+			this.show_result.innerHTML += this.result(this.my_point,this.ia_point);
+		}
+	},
+	score:function(i,j) {
+		var txtHTML = '';
+		txtHTML += "(vous) <b>" + this.bet[i] + "</b> - (IA) <b>" + this.bet[j] + "</b> : ";
+ 
+		if (i === j) {
+			txtHTML += this.equal + "<br />";
+		} else if ((i == 0 && j == 2) || (i == 1 && j == 0) || (i == 2 && j == 1)) {
+			txtHTML += "<b>" + this.win + "</b><br />";
+			this.my_point++;
+		} else {
+			txtHTML += this.lose + "<br />";
+			this.ia_point++;
+		}
+		txtHTML += "Score : " + this.my_point + " - " + this.ia_point + "<br />";
+		return txtHTML;
+	},
+	result:function(my_point,ia_point) {
+		var txtHTML = '';
+		if( this.my_point==this.ia_point ){
+			this.txt_result = this.txt_equal;
+		} else if( this.my_point>this.ia_point ){
+			this.txt_result = this.txt_win;
+		} else {
+			this.txt_result = this.txt_lose;
+		}
+		txtHTML += "<h4>Résultat final (en "+this.count+" coups) : <b>"+this.txt_result+"</b></h4>";
+		txtHTML += "<button type=\"button\" class=\"PFC_btn_replay\">Rejouer ?</button><br />";
+		return txtHTML;
+	},
+	reset:function() {
+		this.txt_result = '';
+		this.show_result.innerHTML = '';
+		this.my_point = 0;
+		this.ia_point = 0;
+		this.count = 0;
+	}
+}
+
+var PFC1 = Object.create(PFC);
+document.body.onload = function(){
+	PFC1.init();
+	var PFC_btns = document.querySelectorAll('.PFC_btn');
+	PFC_btns.forEach(function(PFC_btn) {
+		PFC_btn.addEventListener('click', function() {
+			PFC1.play(PFC_btn.value);
+		}, false);
+	});
+};
+
+document.body.addEventListener( 'click', function ( event ) {
+	if( event.target.className == 'PFC_btn_replay' ) {
+		PFC1.reset();
+	};
+});
+
+</script>
 <!-- ################################################################################################ -->
 <!-- ################################################################################################ -->
 <!-- ################################################################################################ -->
